@@ -1,0 +1,54 @@
+
+Configuraá∆o de IP do Windows
+
+
+Adaptador Ethernet Ethernet 2:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+
+Adaptador Ethernet Ethernet 3:
+
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+   Endereáo IPv6 de link local . . . . . . . . : fe80::e5d8:601a:c700:a95a%13
+   Endereáo IPv4. . . . . . . .  . . . . . . . : 10.100.0.132
+   M†scara de Sub-rede . . . . . . . . . . . . : 255.255.255.255
+   Gateway Padr∆o. . . . . . . . . . . . . . . : 
+
+Adaptador desconhecido OpenVPN Wintun:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+
+Adaptador desconhecido OpenVPN TAP-Windows6:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+
+Adaptador desconhecido Conex∆o Local 2:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+
+Adaptador de Rede sem Fio Wi-Fi:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+
+Adaptador de Rede sem Fio Conex∆o Local* 9:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : 
+
+Adaptador de Rede sem Fio Conex∆o Local* 10:
+
+   Estado da m°dia. . . . . . . . . . . . . .  : m°dia desconectada
+   Sufixo DNS espec°fico de conex∆o. . . . . . : mshome.net
+
+Adaptador Ethernet Ethernet:
+
+   Sufixo DNS espec°fico de conex∆o. . . . . . : fromtis.local
+   Endereáo IPv6 de link local . . . . . . . . : fe80::7439:6520:6255:ae71%16
+   Endereáo IPv4. . . . . . . .  . . . . . . . : 10.226.88.127
+   M†scara de Sub-rede . . . . . . . . . . . . : 255.255.0.0
+   Gateway Padr∆o. . . . . . . . . . . . . . . : 10.226.0.1
