@@ -25,6 +25,9 @@ import br.com.torres.geradorDeVersaoMaven.JSON.dto.GenerateVersionParametersDTO;
 import br.com.torres.geradorDeVersaoMaven.JSON.file.IJSONFileRepository;
 import br.com.torres.geradorDeVersaoMaven.view.interfaces.IDialogRender;
 import br.com.torres.geradorDeVersaoMaven.view.interfaces.IPanelsRender;
+import javax.swing.JScrollPane;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 @Component
 @Primary
@@ -39,6 +42,8 @@ public class GenerateVersionView extends JPanel implements IPanelsRender {
 	private final JComboBox<Object> systems;
 
 	private final JCheckBox chckbxNoProfiles;
+	
+	private final JCheckBox chckbxJustMoveWar;
 
 	private final JCheckBox chckbxNoMoverWar;
 
@@ -84,15 +89,6 @@ public class GenerateVersionView extends JPanel implements IPanelsRender {
 			}
 		});
 
-		JLabel params = new JLabel("Parâmetros");
-		params.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		params.setBounds(205, 276, 119, 53);
-		add(params);
-
-		chckbxNoProfiles = new JCheckBox("Gerar Versão Sem Profiles");
-		chckbxNoProfiles.setBounds(32, 328, 234, 29);
-		add(chckbxNoProfiles);
-
 		Button buttonGenerate = new Button("Gerar Versão");
 		buttonGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -103,10 +99,6 @@ public class GenerateVersionView extends JPanel implements IPanelsRender {
 		buttonGenerate.setBackground(Color.ORANGE);
 		buttonGenerate.setBounds(171, 443, 174, 44);
 		add(buttonGenerate);
-
-		chckbxNoMoverWar = new JCheckBox("Não Mover WAR(s) Para Pasta");
-		chckbxNoMoverWar.setBounds(273, 328, 245, 29);
-		add(chckbxNoMoverWar);
 
 		JButton btnReloadData = new JButton("Recarregar Dados");
 		btnReloadData.addActionListener(new ActionListener() {
@@ -129,6 +121,39 @@ public class GenerateVersionView extends JPanel implements IPanelsRender {
 		lblProfile.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblProfile.setBounds(32, 206, 176, 31);
 		add(lblProfile);
+		
+		
+		JLabel params = new JLabel("Parâmetros");
+		params.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		params.setBounds(205, 276, 119, 53);
+		add(params);
+		
+		chckbxNoMoverWar = new JCheckBox("Não Mover WAR(s) Para Pasta");
+		chckbxNoMoverWar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxJustMoveWar.isSelected()) {
+					chckbxJustMoveWar.setSelected(Boolean.FALSE);
+				}
+			}
+		});
+		
+		chckbxNoMoverWar.setBounds(273, 328, 245, 29);
+		add(chckbxNoMoverWar);
+		
+		chckbxNoProfiles = new JCheckBox("Gerar Versão Sem Profiles");
+		chckbxNoProfiles.setBounds(32, 328, 234, 29);
+		add(chckbxNoProfiles);
+		
+		chckbxJustMoveWar = new JCheckBox("Mover War Para Pasta");
+		chckbxJustMoveWar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(chckbxNoMoverWar.isSelected()) {
+					chckbxNoMoverWar.setSelected(Boolean.FALSE);
+				}
+			}
+		});
+		chckbxJustMoveWar.setBounds(32, 365, 234, 29);
+		add(chckbxJustMoveWar);
 
 	}
 
@@ -186,6 +211,7 @@ public class GenerateVersionView extends JPanel implements IPanelsRender {
 		GenerateVersionParametersDTO parameter = new GenerateVersionParametersDTO();
 		parameter.setDoNotMoveWarToFolder(chckbxNoMoverWar.isSelected());
 		parameter.setGenerateVersionWithNoProfiles(chckbxNoProfiles.isSelected());
+		parameter.setJustMoveWarToFolder(chckbxJustMoveWar.isSelected());
 		return parameter;
 	}
 

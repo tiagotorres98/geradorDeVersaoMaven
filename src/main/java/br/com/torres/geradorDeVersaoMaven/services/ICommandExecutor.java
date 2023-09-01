@@ -1,7 +1,5 @@
 package br.com.torres.geradorDeVersaoMaven.services;
 
-import javax.swing.JDialog;
-
 import br.com.torres.geradorDeVersaoMaven.JSON.dto.DataToGenerateVersionDTO;
 import br.com.torres.geradorDeVersaoMaven.view.ProcessView;
 

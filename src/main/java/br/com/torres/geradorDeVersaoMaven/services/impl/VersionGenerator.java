@@ -27,8 +27,15 @@ public class VersionGenerator implements IVersionGenerator {
 	@Override
 	public void generate(ProcessView dialog, DataToGenerateVersionDTO data) {
 		// TODO Auto-generated method stub
-		commandExecutor.execute(dialog, data);
-		if(!data.getParameters().isDoNotMoveWarToFolder()) fileTranporter.transport(dialog,data);
+		
+		if(!data.getParameters().isJustMoveWarToFolder()) {
+			commandExecutor.execute(dialog, data);
+		}
+		
+		if(!data.getParameters().isDoNotMoveWarToFolder()) { 
+			fileTranporter.transport(dialog,data);
+		}
+		
 		JOptionPane.showMessageDialog(null, "A versão foi gerada com sucesso!");
 		dialog.dispose();
 	}

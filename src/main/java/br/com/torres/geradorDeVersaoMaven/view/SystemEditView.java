@@ -5,11 +5,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -39,7 +42,8 @@ public class SystemEditView extends JPanel implements IPanelsRender{
 	private final Integer PATH_COLUMN = 2;
 	private final Integer MAVEN_PROFILES_COLUMN = 1;
 	private final Integer NAME_COLUMN = 0;
-	
+	private final String DEFAULT_PATH = System.getProperty("user.home") + "\\Documents";
+	private JFileChooser file;
 	private JTextField sysName;
 	private JTable table;
 
@@ -115,22 +119,22 @@ public class SystemEditView extends JPanel implements IPanelsRender{
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
 
-		JButton btnAdicionarLinha = new JButton("Adicionar Linha");
+		JButton btnAdicionarLinha = new JButton("+");
 		btnAdicionarLinha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.addRow(new Object[] { "", "", "" });
 			}
 		});
-		btnAdicionarLinha.setBounds(44, 232, 143, 29);
+		btnAdicionarLinha.setBounds(217, 232, 55, 29);
 		add(btnAdicionarLinha);
 
-		JButton btnAdicionarLinha_1 = new JButton("Apagar Linha");
+		JButton btnAdicionarLinha_1 = new JButton("-");
 		btnAdicionarLinha_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.removeRow(table.getSelectedRow());
 			}
 		});
-		btnAdicionarLinha_1.setBounds(193, 232, 143, 29);
+		btnAdicionarLinha_1.setBounds(281, 232, 55, 29);
 		add(btnAdicionarLinha_1);
 
 		JLabel lblOrganizeASequencia = new JLabel("Organize a sequencia de excecução.");
@@ -205,6 +209,25 @@ public class SystemEditView extends JPanel implements IPanelsRender{
 		buttonSave_1.setBackground(Color.RED);
 		buttonSave_1.setBounds(300, 459, 174, 44);
 		add(buttonSave_1);
+		
+		JButton btnAddVarios = new JButton("Adicionar Vários");
+		btnAddVarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				file = new JFileChooser(DEFAULT_PATH);
+				file.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				file.setDialogTitle("Selecione o diretório...");
+				file.showOpenDialog(null);
+				File path = new File(file.getSelectedFile().getAbsolutePath());
+				
+				Arrays.asList(path.listFiles())
+				.stream()
+				.filter(f-> f.isDirectory())
+				.forEach(p-> model.addRow(new Object[] { p.getName(), p.getPath(), "nao" }));
+			
+			}
+		});
+		btnAddVarios.setBounds(46, 232, 156, 29);
+		add(btnAddVarios);
 
 	}
 	public void getSystemList(JComboBox<Object> systems){

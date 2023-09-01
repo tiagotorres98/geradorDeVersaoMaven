@@ -9,4 +9,5 @@ public class GenerateVersionParametersDTO {
 
 	private boolean generateVersionWithNoProfiles;
 	private boolean doNotMoveWarToFolder;
+	private boolean justMoveWarToFolder;
 }
